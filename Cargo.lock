@@ -7,11 +7,7 @@ name = "breachops-nav"
 version = "0.1.0"
 
 [[package]]
-name = "breachops-nav-cli"
-version = "0.1.0"
-
-[[package]]
-name = "breachops-nav-config"
+name = "breachops-nav-core"
 version = "0.1.0"
 
 [[package]]

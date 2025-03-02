@@ -1,9 +1,12 @@
 [workspace]
-exclude = ["crates/core"]
+exclude = ["/.github/", "/assets/", "/scripts/"]
 members = ["crates/*"]
 resolver = "2"
 
 [workspace.package]
+description = """
+A personal bookmark management command-line tool
+"""
 authors = ["skyeBreach <skyebreach@proton.me>"]
 categories = ["command-line-utilities"]
 keywords = ["cli"]
@@ -14,26 +17,3 @@ homepage = "https://github.com/skyeBreach/breachops-nav"
 repository = "https://github.com/skyeBreach/breachops-nav"
 edition = "2024"
 rust-version = "1.85"
-
-[package]
-version = "0.1.0"
-name = "breachops-nav"
-description = """
-A personal bookmark management command-line tool
-"""
-exclude = ["/.github/", "/assets/", "/scripts/"]
-authors.workspace = true
-categories.workspace = true
-keywords.workspace = true
-license-file.workspace = true
-readme.workspace = true
-documentation.workspace = true
-homepage.workspace = true
-repository.workspace = true
-edition.workspace = true
-rust-version.workspace = true
-
-[[bin]]
-bench = false
-path = "crates/core/main.rs"
-name = "bonav"
