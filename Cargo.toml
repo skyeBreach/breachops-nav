@@ -21,12 +21,12 @@ name = "breachops-nav"
 description = """
 A personal bookmark management command-line tool
 """
-exclude = ["/.github/", "/assets/", "/scripts/", "node_modules"]
-readme = "README.md"
+exclude = ["/.github/", "/assets/", "/scripts/"]
 authors.workspace = true
 categories.workspace = true
 keywords.workspace = true
 license-file.workspace = true
+readme.workspace = true
 documentation.workspace = true
 homepage.workspace = true
 repository.workspace = true
