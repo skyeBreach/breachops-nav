@@ -1,0 +1,8 @@
+{
+    "private": true,
+    "dependencies": {},
+    "devDependencies": {
+        "@basementuniverse/kanbn": "^0.10.0",
+        "@types/bun": "^1.2.3"
+    }
+}
