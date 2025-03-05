@@ -18,5 +18,3 @@ rust-version = "1.85"
 bench = false
 path = "src/main.rs"
 name = "bonav"
-
-[dependencies]
