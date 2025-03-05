@@ -5,11 +5,3 @@ version = 4
 [[package]]
 name = "breachops-nav"
 version = "0.1.0"
-
-[[package]]
-name = "breachops-nav-core"
-version = "0.1.0"
-
-[[package]]
-name = "breachops-nav-utils"
-version = "0.1.0"
