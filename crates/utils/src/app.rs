@@ -1,34 +1,38 @@
-use semver::{BuildMetadata, Prerelease, Version};
+use semver::Version;
 use std::fmt;
 
 /*
 - TODO: Convert this into a read-only AppMetadata and an App Metadata builder, to avoid it being changed
+- TODO: Have it generate from config file
 */
 
 /// The read-only metadata associated with an instance of the app.
-pub struct AppMetadata<'app> {
+pub struct AppMetadata {
     /// Application name
-    name: &'app str,
+    name: &'static str,
     /// Application author
-    author: &'app str,
+    author: &'static str,
     /// Application description
-    description: Option<&'app str>,
+    description: Option<&'static str>,
     /// Application version
     version: Version,
 }
 
-impl<'app> Default for AppMetadata<'app> {
+impl Default for AppMetadata {
     fn default() -> Self {
-        Self {
-            name: "Un-Named App",
-            author: "Jane Doe",
-            description: None,
-            version: Version::new(0, 1, 0),
-        }
+        Self::DEFAULT
     }
 }
 
-impl<'app> AppMetadata<'app> {
+impl AppMetadata {
+    /// Const default object, to allow apps to have access to a static or const object
+    pub const DEFAULT: Self = Self {
+        name: "Un-Named App",
+        author: "Jane Doe",
+        description: None,
+        version: Version::new(0, 1, 0),
+    };
+
     /// Getter for the name of the app instance as a non-mutable string slice
     ///
     /// This has been implemented to enforce a read-only struct field, to avoid app users editing [AppMetadata].
@@ -57,59 +61,18 @@ impl<'app> AppMetadata<'app> {
         return &self.version;
     }
 
-    /// Creates a new app metadata instance from a name and author
-    pub fn new(name: &'app str, author: &'app str) -> Self {
+    /// Constructs a new constant instance of AppMetadata
+    pub const fn new(name: &'static str, author: &'static str, version: Version, description: &'static str) -> Self {
         Self {
-            name: name.into(),
-            author: author.into(),
-            ..Self::default()
+            name: name,
+            author: author,
+            description: Some(description),
+            version: version,
         }
-    }
-
-    // TODO: Move to builder
-    pub fn set_description(mut self, description: &'app str) -> Self {
-        self.description = Some(description.into());
-        return self;
-    }
-
-    // TODO: Move to builder
-    pub fn set_version(mut self, version: Version) -> Self {
-        self.version = version;
-        return self;
-    }
-
-    // TODO: Move to builder
-    pub fn set_version_major(mut self, major: u64) -> Self {
-        self.version.major = major;
-        return self;
-    }
-
-    // TODO: Move to builder
-    pub fn set_version_minor(mut self, minor: u64) -> Self {
-        self.version.minor = minor;
-        return self;
-    }
-
-    // TODO: Move to builder
-    pub fn set_version_patch(mut self, patch: u64) -> Self {
-        self.version.patch = patch;
-        return self;
-    }
-
-    // TODO: Move to builder
-    pub fn set_version_pre(mut self, pre: Prerelease) -> Self {
-        self.version.pre = pre;
-        return self;
-    }
-
-    // TODO: Move to builder
-    pub fn set_version_build(mut self, build: BuildMetadata) -> Self {
-        self.version.build = build;
-        return self;
     }
 }
 
-impl<'app> fmt::Display for AppMetadata<'app> {
+impl fmt::Display for AppMetadata {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         return write!(
             f,
@@ -134,12 +97,13 @@ mod tests {
 
     #[test]
     fn format() {
-        let app = AppMetadata {
-            name: "Test App",
-            author: "Jane Doe",
-            description: Some("Lorem ipsum dolor sit amet, consectetur."),
-            version: Version::new(0, 1, 0),
-        };
+        let app = AppMetadata::new(
+            "Test App",
+            "Jane Doe",
+            Version::new(0, 1, 0),
+            "Lorem ipsum dolor sit amet, consectetur.",
+        );
+
         assert_eq_text!(
             &format!("{}", app),
             "App Metadata: {\n\

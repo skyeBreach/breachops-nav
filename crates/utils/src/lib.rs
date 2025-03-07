@@ -1,6 +1,7 @@
 pub mod app;
 
 pub use crate::app::AppMetadata;
+pub use semver::{BuildMetadata, Prerelease, Version};
 
 #[allow(dead_code, unused_variables, unused_imports)]
 #[cfg(test)]

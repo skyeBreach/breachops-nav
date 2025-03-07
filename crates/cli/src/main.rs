@@ -1,3 +1,5 @@
+mod config;
+
 use std::process::ExitCode;
 
 fn main() -> ExitCode {
