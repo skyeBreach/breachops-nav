@@ -1,6 +1,11 @@
-[package]
-name = "breachops-nav"
+[workspace]
+resolver = "2"
+members = ["crates/cli", "crates/core", "crates/utils"]
+
+[workspace.package]
 version = "0.1.0"
+edition = "2021"
+rust-version = "1.85"
 description = """
 A personal bookmark management command-line tool
 """
@@ -11,10 +16,4 @@ license-file = "LICENSE"
 readme = "README.md"
 documentation = "https://github.com/skyeBreach/breachops-nav"
 homepage = "https://github.com/skyeBreach/breachops-nav"
-edition = "2024"
-rust-version = "1.85"
-
-[[bin]]
-bench = false
-path = "src/main.rs"
-name = "bonav"
+repository = "https://github.com/skyeBreach/breachops-nav"

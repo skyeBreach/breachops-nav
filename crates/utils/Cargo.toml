@@ -1,0 +1,15 @@
+[package]
+name = "breachops-nav_utils"
+version = "0.1.0"
+edition.workspace = true
+description.workspace = true
+authors.workspace = true
+categories.workspace = true
+keywords.workspace = true
+license-file.workspace = true
+readme.workspace = true
+documentation.workspace = true
+homepage.workspace = true
+repository.workspace = true
+
+[dependencies]
