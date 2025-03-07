@@ -13,3 +13,7 @@ homepage.workspace = true
 repository.workspace = true
 
 [dependencies]
+semver = "1.0.26"
+
+[dev-dependencies]
+ra_ap_test_utils = "0.0.268"
