@@ -19,3 +19,4 @@ path = "src/main.rs"
 name = "bonav"
 
 [dependencies]
+breachops-nav_utils = { version = "0.1.0", path = "../utils" }

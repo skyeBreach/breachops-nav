@@ -14,3 +14,4 @@ edition.workspace = true
 rust-version.workspace = true
 
 [dependencies]
+breachops-nav_utils = { version = "0.1.0", path = "../utils" }
